@@ -1,0 +1,14 @@
+.btn-primary {
+    background-color: $brand;
+    border-color: $brand;
+    &:hover{
+        background-color: $brand;
+        border-color: $brand;
+    }
+    &:focus {
+        border-color: $brand;
+    }
+    &:active {
+        border-color: $brand;
+    }
+}
