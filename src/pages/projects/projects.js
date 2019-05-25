@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './projects.scss';
 
@@ -32,7 +33,7 @@ class Projects extends React.Component {
               projects.map((project, index) => {
                 return (
                   <div key={index} className="item">
-                    {project.title}
+                    <Link to={`/dashboard/${project.uuid}/tasks`}>{project.title}</Link>
                   </div>
                 )
               })
