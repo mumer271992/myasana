@@ -34,12 +34,17 @@ class CreateProject extends React.Component {
     const { match } = this.props;
     return (
       <div className="create-projects">
+        <h4>Create Project</h4>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <label>Project Title</label>
-            <input type="text" name="title" className="form-control" placeholder="project title" onChange={this.onChange} />
+            <label>Title</label>
+            <input type="text" name="title" className="form-control" placeholder="Title" onChange={this.onChange} />
           </div>
-          <button type="submit" className="btn btn-primary">Create</button>
+          <div className="form-group">
+            <label>Description</label>
+            <input type="text" name="description" className="form-control" placeholder="Description" onChange={this.onChange} />
+          </div>
+          <button type="submit" className="btn btn-success">Create</button>
         </form>
       </div>
     )
