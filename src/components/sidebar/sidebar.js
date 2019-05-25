@@ -19,7 +19,7 @@ class Sidebar extends React.Component {
           <div className="sidebar-item cursor-pointer">
             My Tasks
           </div>
-          <div className="sidebar-item cursor-pointer">
+          <div className="sidebar-item active cursor-pointer">
             My Projects
           </div>
       </div>

@@ -15,9 +15,9 @@ class Navabr extends React.Component {
   render () {
     return (
       <div>
-        <nav className="navbar navbar-light bg-light">
-          <a className="navbar-brand">My Asana</a>
-          <a className="btn btn-primary" onClick={this.signoutUser}>Signout</a>
+        <nav className="navbar navbar-light">
+          <a className="navbar-brand"></a>
+          <a className="btn btn-light" onClick={this.signoutUser}>Signout</a>
         </nav>
       </div>
     );

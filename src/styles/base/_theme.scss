@@ -1,14 +1,15 @@
+
 .btn-primary {
-    background-color: $brand;
-    border-color: $brand;
+    background-color: $primary;
+    border-color: $primary;
     &:hover{
-        background-color: $brand;
-        border-color: $brand;
+        background-color: $primary;
+        border-color: $primary;
     }
     &:focus {
-        border-color: $brand;
+        border-color: $primary;
     }
     &:active {
-        border-color: $brand;
+        border-color: $primary;
     }
 }

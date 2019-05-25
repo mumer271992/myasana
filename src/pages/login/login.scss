@@ -1,15 +1,15 @@
 @import '../../styles/base/settings';
 
 .login-page{
-    background-color: $brand;
+    background-color: $background;
     h2{
-        color: #ffffff;
+        color: $primary;
     }
     .logo {
         padding-top: 8rem;
     }
     .form-container {
-        max-width: 580px;
+        max-width: 420px;
         width: 100%;
         margin: auto;
         position: absolute;
@@ -17,11 +17,21 @@
         top: 50%;
         transform: translate(-50%, -50%);
         background-color: $white;
-        padding: 2rem 5rem;
+        padding: 2rem;
         color: #000000;
         button {
-            margin-top: 1rem;
+            display: block;
+            width: 100%;
+            border-radius: 20px;
+            margin-top: 2rem;
             margin-bottom: 1rem;
+        }
+        button.btn-default {
+            border: 1px solid #ced4da;
+            &:hover{
+                background-color: $primary;
+                color: #ffffff;
+            }
         }
     }
 }

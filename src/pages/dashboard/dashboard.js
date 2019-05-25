@@ -7,7 +7,7 @@ import SideBar from '../../components/sidebar/sidebar';
 import Navbar from '../../components/navbar/navbarHOC';
 import Projects from '../projects/projectsHOC';
 import Tasks from '../tasks/tasks';
-import CreateProject from '../create/createHOC'
+import CreateProject from '../create/createHOC';
 
 class Dashboard extends React.Component {
   constructor(props){
@@ -17,7 +17,7 @@ class Dashboard extends React.Component {
   render() {
     const { match } = this.props;
     return (
-      <div className="w-100">
+      <div className="page dashboard-page w-100">
         <div className="row">
           <div className="col-md-2">
             <SideBar />  

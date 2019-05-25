@@ -1,32 +1,33 @@
 .projects-page {
-    background-color: #fff;
-    padding: 2rem 1rem;
-    height: calc(100vh - 56px);
-    border: 3px solid #ccc;
-    border-radius: 8px;
+    margin: 3rem 2rem;
+    background-color: #ffffff;
+    border-radius: 12px;
     .projects-header{
-        
+        border-bottom: 1px solid #d3d3d3;
+        padding: 1rem
     }
     .projects-list{
         overflow-y: auto;
         display: flex;
         flex-direction: row;
-        margin-top: 4rem;
+        padding: 2rem 1rem;
         .item {
-            width: 150px;
-            height: 150px;
+            width: 135px;
+            height: 135px;
             text-align: center;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             display: inline-block;
-            padding: 40px;
-            border: 5px solid #cccccc;
+            padding: 35px;
+            border: 5px solid #b7bfc6;
             border-style: dashed;
             border-radius: 16px;
-            background-color: #f8f9fa;
+            background-color: #b7bfc6;
+            color: #ffffff;
             margin-right: 16px;
             cursor: pointer;
             &:hover {
-                background-color: #cccccc;
+                background-color: #313540;
+                border-color: #313540
 
             }
         }
