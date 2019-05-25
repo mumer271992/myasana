@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import Login from 'pages/login/login.js';
+import Login from 'pages/login/login';
 import { signin } from 'actions/user';
 
 const mapStateToProps = (state) => {

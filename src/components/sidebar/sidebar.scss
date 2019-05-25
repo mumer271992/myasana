@@ -15,6 +15,9 @@
     padding: 1.2rem 2.5rem;
     font-size: 14px;
     font-weight: normal;
+    a {
+      color: inherit;
+    }
   }
   .sidebar-item.active {
     background-color: $primary;

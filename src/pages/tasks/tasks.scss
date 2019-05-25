@@ -1,0 +1,32 @@
+.tasks-page {
+  margin: 3rem 2rem;
+  border-radius: 12px;
+  .tasks-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid #d3d3d3;
+    padding: 1rem
+  }
+  .tasks-list {
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+    padding: 2rem 1rem;
+    .column {
+      width: 300px;
+      min-width: 300px;
+      min-height: 420px;
+      max-height: 675px;
+      height: 420px;
+      overflow-y: auto;
+      margin-right: 1rem;
+      .btn {
+        width: 100%;
+      }
+      & >div, >button {
+        margin: 0.5rem 0;
+      }
+    }
+  }
+}
