@@ -12,9 +12,9 @@ import PrivateRoute from './PrivateRoute';
 import { clearMessage } from '../actions/alert';
 
 /* Load All Pages */
-import Login from '../pages/login/loginHOC';
-import Signup from '../pages/signup/signupHOC';
-import Dashboard from '../pages/dashboard/dashboardHOC';
+import Login from '../pages/Login/LoginHOC';
+import Signup from '../pages/Signup/SignupHOC';
+import Dashboard from '../pages/Dashboard/DashboardHOC';
 
 const Router = ({ alert, clear }) => (
   <div>

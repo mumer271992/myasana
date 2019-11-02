@@ -5,15 +5,8 @@ import TaskEdit from './TaskEdit';
 
 import { update } from '../../actions/task';
 
-const mapStateToProps = (state) => {
-  return {
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  updateTask: (task, history) => dispatch(update(task.fbKey, task, history)),
+});
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    updateTask: (task, history) => dispatch(update(task.fbKey, task, history)),
-  };
-};
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TaskEdit));
+export default withRouter(connect(null, mapDispatchToProps)(TaskEdit));

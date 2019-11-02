@@ -4,12 +4,10 @@ import { withRouter } from 'react-router-dom';
 import Tasks from 'pages/tasks/tasks';
 import { getList } from '../../actions/task';
 
-const mapStateToProps = (state) => {
-  return {
-    tasks: state.tasks.tasks,
-    loading: state.loading.loading,
-  };
-};
+const mapStateToProps = state => ({
+  tasks: state.tasks.tasks,
+  loading: state.loading.loading,
+});
 
 const mapDispatchToProps = dispatch => ({
   getTasks: projectId => dispatch(getList(projectId)),

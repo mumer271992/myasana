@@ -1,18 +1,20 @@
+/* eslint-disable react/prefer-stateless-function */
+/* eslint-disable no-useless-constructor */
 import React from 'react';
 import { Route } from 'react-router-dom'; 
 
-import './dashboard.scss';
 
-import SideBar from '../../components/sidebar/sidebar';
-import Navbar from '../../components/navbar/navbarHOC';
-import Projects from '../projects/projectsHOC';
-import Tasks from '../tasks/tasksHOC';
-import CreateProject from '../create/createHOC';
-import CreateTask from 'pages/createTask/createTaskHOC';
+import SideBar from '../../components/Sidebar/Sidebar';
+import Navbar from '../../components/Navbar/NavbarHOC';
+import Projects from '../Projects/ProjectsHOC';
+import Tasks from '../Tasks/TasksHOC';
+import CreateProject from '../CreateProject/CreateProjectHOC';
+import CreateTask from '../CreateTask/CreateTaskHOC';
+import './Dashboard.scss';
 
 class Dashboard extends React.Component {
-  constructor(props){
-      super(props);
+  constructor(props) {
+    super(props);
   }
 
   render() {
@@ -21,18 +23,18 @@ class Dashboard extends React.Component {
       <div className="page dashboard-page w-100">
         <div className="row">
           <div className="col-md-2">
-            <SideBar />  
+            <SideBar />
           </div>
           <div className="col-md-10">
             <Navbar />
             <Route path={`${match.path}/list`} component={Projects} />
             <Route path={`${match.path}/create`} component={CreateProject} />
-            <Route path={`${match.path}/:project_uuid/tasks`} component={Tasks} />
-            <Route path={`${match.path}/:project_uuid/create`} component={CreateTask} />
+            <Route path={`${match.path}/:projectUuid/tasks`} component={Tasks} />
+            <Route path={`${match.path}/:projectUuid/create`} component={CreateTask} />
           </div>
         </div>
       </div>
-    )
+    );
   }
 }
 

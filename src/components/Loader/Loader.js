@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './loader.scss';
+import './Loader.scss';
 
 const Loader = () => (
   <div className="loader t-c">

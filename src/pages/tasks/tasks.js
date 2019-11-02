@@ -1,73 +1,54 @@
+/* eslint-disable react/button-has-type */
 import React from 'react';
 
-import 'pages/tasks/tasks.scss';
-import Task from 'components/task/task';
-import Loader from 'components/Loader/Loader';
-import Modal from 'components/Modal/modal';
-import TaskEdit from 'components/TaskEdit/TaskEditHOC';
-import TasksService from '../../services/Tasks';
+import Loader from '../../components/Loader/Loader';
+import Modal from '../../components/Modal/Modal';
+import TaskEdit from '../../components/TaskEdit/TaskEditHOC';
+import Task from '../../components/Task/Task';
+import './Tasks.scss';
 
 
 class Tasks extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      tasks: [],
-      loading: false,
       showModal: false,
       selectedTask: {},
     };
   }
 
-  // addTask = (e) => {
-  //   e.preventDefault();
-  //   const tmpTask = {
-  //     title: 'New Task',
-  //     uuid: '',
-  //     description: '',
-  //     due_date: null,
-  //     status: 'todo',
-  //     project_uuid: props.match.params.project_uuid,
-  //     user_uuid: '',
-  //   };
-  //   const tasks = [ ...this.state.tasks, tmpTask ];
-  //   console.log("Adding temp task");
-  //   console.log(tasks);
-  //   this.setState(state => ({ tasks }));
-  // }
   componentDidMount() {
-    console.log("Fetching Tasks List");
-    const { project_uuid } = this.props.match.params;
-    this.props.getTasks(project_uuid);
+    const { match } = this.props;
+    const { getTasks } = this.props;
+    getTasks(match.params.projectUuid);
   }
 
   addTask = (e) => {
     e.preventDefault();
     const { history, match } = this.props;
-    history.push(`/dashboard/${match.params.project_uuid}/create`);
+    history.push(`/dashboard/${match.params.projectUuid}/create`);
   }
 
   selectTask = (task) => {
-    console.log("Selected Task: ", task);
     this.setState(() => ({
       selectedTask: task,
       showModal: true,
-    }))
+    }));
   }
 
   hideModal = () => {
     this.setState(() => ({
       showModal: false,
-    }))
+    }));
   }
 
   render() {
-    const { project_uuid } = this.props.match.params;
     const { tasks, loading } = this.props;
+    const { showModal, selectedTask } = this.state;
     return (
       <div className="tasks-page">
         <div className="tasks-header">
-          <h3>My Tasks List { project_uuid } </h3>
+          <h3>My Tasks List </h3>
           <button className="btn btn-primary" onClick={this.addTask}>Add Task</button>
         </div>
         <div className="tasks-list">
@@ -89,13 +70,14 @@ class Tasks extends React.Component {
           </div>
         </div>
         {
-          this.state.showModal && (
+          showModal && (
             <Modal
-              show={this.state.showModal}
-              hideModal={this.hideModal}>
-                <TaskEdit
-                  task={this.state.selectedTask}
-                />
+              show={showModal}
+              hideModal={this.hideModal}
+            >
+              <TaskEdit
+                task={selectedTask}
+              />
             </Modal>
           )
         }

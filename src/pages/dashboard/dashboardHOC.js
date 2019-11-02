@@ -1,15 +1,6 @@
-import Dashboard from './dashboard';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import Dashboard from './Dashboard';
 
-const mapStateToProps = (state) => {
-    return {
-    }
-}
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-    }
-}
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Dashboard));
+export default withRouter(connect(null, null)(Dashboard));

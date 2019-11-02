@@ -1,7 +1,10 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import 'components/Dropdown/dropdown.scss';
+import 'components/Dropdown/Dropdown.scss';
 
 class Dropdown extends React.Component {
   constructor(props) {
@@ -20,7 +23,7 @@ class Dropdown extends React.Component {
     if (!selected) {
       return;
     }
-    const index = list.findIndex(item => item[uniqueKey] === parseInt(selected));
+    const index = list.findIndex(item => item[uniqueKey] === parseInt(selected, 2));
     if (index > -1) {
       this.setState(() => ({
         title: list[index].name,

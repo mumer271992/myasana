@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/label-has-for */
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 
-import Dropdown from 'components/Dropdown/dropdown';
+import Dropdown from 'components/Dropdown/Dropdown';
 
 class TaskEdit extends React.Component {
   constructor(props) {
@@ -38,32 +40,33 @@ class TaskEdit extends React.Component {
       statuses: [
         {
           id: 1,
-          name: "To Do",
-          value: "to_do",
+          name: 'To Do',
+          value: 'to_do',
         },
         {
           id: 2,
-          name: "In Progress",
-          value: "in_progress",
+          name: 'In Progress',
+          value: 'in_progress',
         },
         {
           id: 3,
-          name: "Complete",
-          value: "complete",
+          name: 'Complete',
+          value: 'complete',
         }
-      ]
-    }
+      ],
+    };
   }
 
   componentDidMount() {
     const { task } = this.props;
     this.setState(() => ({ ...task }));
   }
+
   onChange = (e) => {
-    let { name, value } = e.target
+    const { name, value } = e.target;
     this.setState(() => ({
       [name]: value
-    }))
+    }));
   }
 
   onSelectOwner = (id) => {
@@ -79,23 +82,26 @@ class TaskEdit extends React.Component {
   }
 
   onSubmit = (e) => {
-    e.preventDefault()
-    let project = null
-    console.log("Update Task");
-    console.log(this.state.title, this.state.description);
-    if (this.state.title) {
-      let task = {
-        ...this.props.task,
-        ...this.state
-      };
+    e.preventDefault();
+    const { title } = this.state;
+    const { history, updateTask, task } = this.props;
+    if (title) {
       delete task.teamMembers;
-      this.props.updateTask(task, this.props.history)
+      updateTask({
+        ...task,
+        ...this.state
+      }, history);
     }
   }
 
   render() {
     const { task } = this.props;
-    const { title, description, teamMembers, statuses } = this.state;
+    const {
+      title,
+      description,
+      teamMembers,
+      statuses
+    } = this.state;
     return (
       <div>
         <form onSubmit={this.onSubmit}>

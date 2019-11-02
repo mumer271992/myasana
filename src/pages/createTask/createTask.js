@@ -4,8 +4,8 @@
 import React from 'react';
 import uuid from 'uuid';
 
-import Dropdown from 'components/Dropdown/dropdown';
-import 'pages/createTask/createTask.scss';
+import Dropdown from '../../components/Dropdown/Dropdown';
+import './CreateTask.scss';
 
 class CreateTask extends React.Component {
   constructor(props) {
@@ -39,18 +39,18 @@ class CreateTask extends React.Component {
       statuses: [
         {
           id: 1,
-          name: "To Do",
-          value: "to_do",
+          name: 'To Do',
+          value: 'to_do',
         },
         {
           id: 2,
-          name: "In Progress",
-          value: "in_progress",
+          name: 'In Progress',
+          value: 'in_progress',
         },
         {
           id: 1,
-          name: "Complete",
-          value: "complete",
+          name: 'Complete',
+          value: 'complete',
         }
       ],
     };
@@ -80,7 +80,7 @@ class CreateTask extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    const { createTask, history, location, match } = this.props;
+    const { createTask, history, match } = this.props;
     const { title, description, owner } = this.state;
     const task = {
       uuid: uuid(),

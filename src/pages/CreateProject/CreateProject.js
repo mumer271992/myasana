@@ -1,37 +1,39 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/label-has-for */
 import React from 'react';
-import { Route } from 'react-router-dom'; 
 import uuid from 'uuid';
-import './create.scss';
+import './CreateProject.scss';
 
 class CreateProject extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      title: ''
-    }
+      title: '',
+    };
   }
 
   onChange = (e) => {
-    let { name, value } = e.target
+    const { name, value } = e.target;
     this.setState(() => ({
       [name]: value
-    }))
+    }));
   }
 
   onSubmit = (e) => {
-    e.preventDefault()
-    let project = null
-    if (this.state.title) {
+    e.preventDefault();
+    let project = null;
+    const { title } = this.state;
+    const { createProject, history } = this.props;
+    if (title) {
       project = {
         uuid: uuid(),
-        title: this.state.title
-      }
-      this.props.createProject(project, this.props.history)
+        title
+      };
+      createProject(project, history);
     }
   }
 
   render() {
-    const { match } = this.props;
     return (
       <div className="create-projects">
         <h4>Create Project</h4>
@@ -47,7 +49,7 @@ class CreateProject extends React.Component {
           <button type="submit" className="btn btn-success">Create</button>
         </form>
       </div>
-    )
+    );
   }
 }
 
