@@ -10,7 +10,7 @@ module.exports = (env) => {
     entry: ['babel-polyfill', './src/app.js'],
     output: {
       path: path.join(__dirname, 'public', 'dist'),
-      filename: 'bundle.js'
+      filename: 'bundle.js',
     },
     resolve: {
       alias: {
@@ -23,13 +23,13 @@ module.exports = (env) => {
         store: path.resolve(__dirname, 'src/store/'),
         styles: path.resolve(__dirname, 'src/styles/'),
       },
-      extensions: ['.js', '.jsx', '.scss', '.png', '.jpg', '.gif', '.jpeg']
+      extensions: ['.js', '.jsx', '.scss', '.png', '.jpg', '.gif', '.jpeg'],
     },
     module: {
       rules: [{
         loader: 'babel-loader',
-        test: /\.js$/,
-        exclude: /node_modules/
+        test: /\.(js||jsx)$/,
+        exclude: /node_modules/,
       }, {
         test: /\.s?css$/,
         use: CSSExtract.extract({
@@ -37,30 +37,30 @@ module.exports = (env) => {
             {
               loader: 'css-loader',
               options: {
-                sourceMap: true
-              }
+                sourceMap: true,
+              },
             },
             {
               loader: 'sass-loader',
               options: {
-                sourceMap: true
-              }
-            }
-          ]
-        })
-      }]
+                sourceMap: true,
+              },
+            },
+          ],
+        }),
+      }],
     },
     plugins: [
       CSSExtract,
       new webpack.DefinePlugin({
-        'process.env.NODE_ENV': process.env.NODE_ENV
-      })
+        'process.env.NODE_ENV': process.env.NODE_ENV,
+      }),
     ],
     devtool: 'source-map',
     devServer: {
       contentBase: path.join(__dirname, 'public'),
       historyApiFallback: true,
-      publicPath: '/dist/'
-    }
+      publicPath: '/dist/',
+    },
   };
 };

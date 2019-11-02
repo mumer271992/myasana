@@ -6,14 +6,14 @@ import { getList } from '../../actions/project';
 
 const mapStateToProps = (state) => {
   return {
-    projects: state.projects.projects
-  }
-}
+    projects: state.projects.projects,
+  };
+};
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getProjects: () => dispatch(getList()) 
-  }
-}
+    getProjects: () => dispatch(getList()),
+  };
+};
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Projects));

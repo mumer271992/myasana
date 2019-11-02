@@ -4,10 +4,12 @@ import user from './user';
 import alert from './alert';
 import projects from './projects';
 import loading from './loading';
+import tasks from './tasks';
 
 export default combineReducers({
-    'user': user,
-    'alert': alert,
-    'projects': projects,
-    'loading': loading
-})
+  user,
+  alert,
+  projects,
+  loading,
+  tasks,
+});

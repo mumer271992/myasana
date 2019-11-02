@@ -1,66 +1,53 @@
-import Auth from 'services/Auth';
-import { showSuccessMessage, showErrorMessage } from 'actions/alert';
-import { showLoader, hideLoader } from 'actions/loading';
+/* eslint-disable no-undef */
+import Auth from '../services/Auth';
+import { showSuccessMessage, showErrorMessage } from './alert';
+import { showLoader, hideLoader } from './loading';
 
-//////////* Actions */////////////
+export const saveUser = user => ({
+  type: 'SAVE_USER',
+  user,
+});
 
-export const saveUser = (user) => {
-    return {
-        type: 'SAVE_USER',
-        user
-    }
-}
-
-export const clearUser = (user) => {
-    return {
-        type: 'CLEAR_USER'
-    }
-}
+export const clearUser = () => ({
+  type: 'CLEAR_USER',
+});
 
 /* Async Action Creators */
 
-export const signup = (user) => {
-    return (dispatch) => {
-        dispatch(showLoader());
-        Auth.signup(user).then((resp) => {
-            dispatch(hideLoader());
-            if (resp && resp.email) {
-                let user = {email: resp.email, isLoggedIn: true}
-                dispatch(saveUser(user));
-            }
-        }).catch(() => {
-            dispatch(hideLoader());
-        })
+export const signup = user => (dispatch) => {
+  dispatch(showLoader());
+  Auth.signup(user).then((resp) => {
+    dispatch(hideLoader());
+    if (resp && resp.email) {
+      dispatch(saveUser({ email: resp.email, isLoggedIn: true }));
     }
+  }).catch(() => {
+    dispatch(hideLoader());
+  });
+};
+
+export const signin = (user, history) => (dispatch) => {
+  dispatch(showLoader());
+  Auth.signin(user).then((resp) => {
+    dispatch(hideLoader());
+    if (resp) {
+      dispatch(saveUser({ email: resp.email, isLoggedIn: true }));
+      history.push('/dashboard/list');
+      dispatch(showSuccessMessage('User loggedIn successfully.'));
+    }
+  })
+    .catch((error) => {
+      dispatch(hideLoader());
+      dispatch(showErrorMessage(error.message));
+    });
 }
 
-export const signin = (user, history) => {
-    return (dispatch) => {
-        dispatch(showLoader());
-        Auth.signin(user).then((resp) => {
-            dispatch(hideLoader());
-            if (resp) {
-                let user = {email: resp.email, isLoggedIn: true}
-                dispatch(saveUser(user))
-                history.push("/dashboard/list");
-                dispatch(showSuccessMessage("User loggedIn successfully."))
-            }
-        })
-        .catch(error => {
-            dispatch(hideLoader());
-            dispatch(showErrorMessage(error.message))
-        })
-    }
-}
-
-export const signout = (history) => {
-    return (dispatch) => {
-        Auth.signout().then((resp) => {
-            localStorage.removeItem('user');
-            dispatch(clearUser())
-            history.push('/signin');
-        }).catch((error) => {
-            dispatch(showErrorMessage(error.message));
-        });
-    }
-}
+export const signout = history => (dispatch) => {
+  Auth.signout().then(() => {
+    localStorage.removeItem('user');
+    dispatch(clearUser());
+    history.push('/signin');
+  }).catch((error) => {
+    dispatch(showErrorMessage(error.message));
+  });
+};

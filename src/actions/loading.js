@@ -1,13 +1,7 @@
-//////////* Actions */////////////
+export const showLoader = () => ({
+  type: 'SHOW_LOADER',
+});
 
-export const showLoader = () => {
-    return {
-        type: 'SHOW_LOADER'
-    }
-}
-
-export const hideLoader = () => {
-    return {
-        type: 'HIDE_LOADER'
-    }
-}
+export const hideLoader = () => ({
+  type: 'HIDE_LOADER',
+});

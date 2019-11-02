@@ -1,27 +1,19 @@
-//////////* Actions */////////////
+export const showSuccessMessage = message => ({
+  type: 'SUCCESS',
+  alert: {
+    type: 'success-message',
+    message,
+  }
+});
 
-export const showSuccessMessage = (message) => {
-    return {
-        type: 'SUCCESS',
-        alert: {
-            type: 'success-message',
-            message: message
-        }
-    }
-}
+export const showErrorMessage = message => ({
+  type: 'ERROR',
+  alert: {
+    type: 'error-message',
+    message,
+  }
+});
 
-export const showErrorMessage = (message) => {
-    return {
-        type: 'ERROR',
-        alert: {
-            type: 'error-message',
-            message: message
-        }
-    }
-}
-
-export const clearMessage = () => {
-    return {
-        type: 'CLEAR'
-    }
-}
+export const clearMessage = () => ({
+  type: 'CLEAR'
+});

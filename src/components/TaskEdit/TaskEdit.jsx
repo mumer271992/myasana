@@ -1,19 +1,18 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable jsx-a11y/label-has-for */
-/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-import uuid from 'uuid';
 
 import Dropdown from 'components/Dropdown/dropdown';
-import 'pages/createTask/createTask.scss';
 
-class CreateTask extends React.Component {
+class TaskEdit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       title: '',
       description: '',
+      status: '',
       owner: '',
+      project_uuid: '',
+      uuid: '',
+      fbKey: '',
       teamMembers: [
         {
           id: 1,
@@ -48,25 +47,26 @@ class CreateTask extends React.Component {
           value: "in_progress",
         },
         {
-          id: 1,
+          id: 3,
           name: "Complete",
           value: "complete",
         }
-      ],
-    };
-    this.onSelectOwner = this.onSelectOwner.bind(this);
-    this.onChange = this.onChange.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
+      ]
+    }
   }
 
-  onChange(e) {
-    const { name, value } = e.target;
+  componentDidMount() {
+    const { task } = this.props;
+    this.setState(() => ({ ...task }));
+  }
+  onChange = (e) => {
+    let { name, value } = e.target
     this.setState(() => ({
-      [name]: value,
-    }));
+      [name]: value
+    }))
   }
 
-  onSelectOwner(id) {
+  onSelectOwner = (id) => {
     this.setState({
       owner: id,
     });
@@ -78,42 +78,43 @@ class CreateTask extends React.Component {
     });
   }
 
-  onSubmit(e) {
-    e.preventDefault();
-    const { createTask, history, location, match } = this.props;
-    const { title, description, owner } = this.state;
-    const task = {
-      uuid: uuid(),
-      title,
-      description,
-      owner,
-      project_uuid: match.params.project_uuid,
-      status: 'to_do',
-    };
-    const successRedirectUrl = `/dashboard/${match.params.project_uuid}/tasks`;
-    createTask(task, history, successRedirectUrl);
+  onSubmit = (e) => {
+    e.preventDefault()
+    let project = null
+    console.log("Update Task");
+    console.log(this.state.title, this.state.description);
+    if (this.state.title) {
+      let task = {
+        ...this.props.task,
+        ...this.state
+      };
+      delete task.teamMembers;
+      this.props.updateTask(task, this.props.history)
+    }
   }
 
   render() {
-    const { teamMembers, statuses } = this.state;
+    const { task } = this.props;
+    const { title, description, teamMembers, statuses } = this.state;
     return (
-      <div className="create-task">
+      <div>
         <form onSubmit={this.onSubmit}>
-          <h4>Create Task</h4>
           <div className="form-group">
             <label>Title</label>
-            <input type="text" name="title" className="form-control" placeholder="Title" onChange={this.onChange} />
+            <input type="text" name="title" className="form-control" placeholder="Title" value={title} onChange={this.onChange} />
           </div>
           <div className="form-group">
             <label>Description</label>
-            <input type="text" name="description" className="form-control" placeholder="Description" onChange={this.onChange} />
+            <textarea type="text" name="description" className="form-control" placeholder="Description" value={description} onChange={this.onChange} />
           </div>
           <div className="form-group">
             <label>Assignee</label>
             <Dropdown
               title="Assignee"
               list={teamMembers}
-              onSelectOwner={this.onSelectOwner}
+              selected={task.owner}
+              uniqueKey="id"
+              onSelect={this.onSelectOwner}
             />
           </div>
           <div className="form-group">
@@ -125,11 +126,11 @@ class CreateTask extends React.Component {
               onSelect={this.onSelectStatus}
             />
           </div>
-          <button type="submit" className="btn btn-primary">Create</button>
+          <button type="submit" className="btn btn-success">Update</button>
         </form>
       </div>
     );
   }
 }
 
-export default CreateTask;
+export default TaskEdit;

@@ -1,15 +1,15 @@
-let defaultState = { loading: false }
+const defaultState = { loading: false };
 export default (state = defaultState, action) => {
-  switch(action.type) {
+  switch (action.type) {
     case 'SHOW_LOADER':
       return {
         loading: true
-      }
+      };
     case 'HIDE_LOADER':
       return {
         loading: false
-      }
+      };
     default:
       return state;
   }
-}
+};

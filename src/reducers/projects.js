@@ -1,20 +1,18 @@
-let defaultState = {
-    projects: []
-}
+const defaultState = {
+  projects: []
+};
 
 export default (state = defaultState, action) => {
-    switch(action.type) {
-        case 'SAVE_PROJECTS':
-            let projects = [ ...action.projects ]
-            return {
-                projects: projects
-            }
-        case 'SAVE_PROJECT':
-            let project = { ...action.project }
-            return {
-                projects: [ ...state.projects, project ]
-            }
-        default:
-            return state;
-    }
-}
+  switch (action.type) {
+    case 'SAVE_PROJECTS':
+      return {
+        projects: [...action.projects],
+      };
+    case 'SAVE_PROJECT':
+      return {
+        projects: [...state.projects, { ...action.project }]
+      };
+    default:
+      return state;
+  }
+};

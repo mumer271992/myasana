@@ -6,7 +6,7 @@ import './dashboard.scss';
 import SideBar from '../../components/sidebar/sidebar';
 import Navbar from '../../components/navbar/navbarHOC';
 import Projects from '../projects/projectsHOC';
-import Tasks from '../tasks/tasks';
+import Tasks from '../tasks/tasksHOC';
 import CreateProject from '../create/createHOC';
 import CreateTask from 'pages/createTask/createTaskHOC';
 

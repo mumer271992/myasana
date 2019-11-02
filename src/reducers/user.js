@@ -1,32 +1,24 @@
+/* eslint-disable no-undef */
 let defaultState = {
-    first_name: '',
-    last_name: '',
-    email: '',
-    isLoggedIn: false
-}
-let user = JSON.parse(localStorage.getItem('user'));
+  first_name: '',
+  last_name: '',
+  email: '',
+  isLoggedIn: false
+};
 
-defaultState = { ...defaultState, ...user }
-console.log("User state initialized")
-console.log(defaultState)
+const user = JSON.parse(localStorage.getItem('user'));
+defaultState = { ...defaultState, ...user };
+
 export default (state = defaultState, action) => {
-    switch(action.type) {
-        case 'SAVE_USER': {
-            let user = {
-                ...state,
-                ...action.user
-            }
-            localStorage.setItem('user', JSON.stringify(user));
-            return user;
-        }
-        case 'CLEAR_USER': {
-            let user = {
-                ...state,
-                ...defaultState
-            }
-            return user;
-        }
-        default:
-            return state;
+  switch (action.type) {
+    case 'SAVE_USER': {
+      localStorage.setItem('user', JSON.stringify({ ...state, ...action.user }));
+      return user;
     }
-}
+    case 'CLEAR_USER': {
+      return { ...state, ...defaultState };
+    }
+    default:
+      return state;
+  }
+};

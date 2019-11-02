@@ -36,8 +36,6 @@ button:disabled {
 }
 
 .loader {
-  height: 100vh;
-  width: 100vw;
   z-index: 1001;
 }
 
@@ -51,10 +49,10 @@ button:disabled {
   box-sizing: border-box;
   display: block;
   position: absolute;
-  width: 51px;
-  height: 51px;
+  width: 42px;
+  height: 42px;
   margin: 6px;
-  border: 6px solid #151b26;
+  border: 3px solid #151b26;
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   border-color: #151b26 transparent transparent transparent;
@@ -75,5 +73,23 @@ button:disabled {
   100% {
     transform: rotate(360deg);
   }
+}
+
+i.arrow {
+  border: solid #ced4da;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  margin-left: 1rem;
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
 }
 
