@@ -1,4 +1,4 @@
-# My Asana is an MVP of task maager
+# My Asana is an MVP of task manager
 
 This is an SPA build usisng React + Redux and data is stored on firebase.
 It includes basic user authentication. User can signup and generate projects and tasks in each project.
