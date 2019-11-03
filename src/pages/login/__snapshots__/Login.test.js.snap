@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login page component test suit Signin page rendered successfully 1`] = `
+<div
+  className="page login-page"
+>
+  <h2
+    className="text-center logo"
+  >
+    My Asana
+  </h2>
+  <div
+    className="form-container"
+  >
+    <h2
+      className="text-center"
+    >
+      Login
+    </h2>
+    <form
+      data-test="signin-form"
+      onSubmit={[Function]}
+    >
+      <div
+        className="form-group"
+      >
+        <label>
+          Email address
+        </label>
+        <input
+          aria-describedby="emailHelp"
+          className="form-control"
+          id="exampleInputEmail1"
+          name="email"
+          onChange={[Function]}
+          placeholder="Enter email"
+          type="email"
+        />
+        <small
+          className="form-text text-muted"
+          id="emailHelp"
+        >
+          We'll never share your email with anyone else.
+        </small>
+      </div>
+      <div
+        className="form-group"
+      >
+        <label>
+          Password
+        </label>
+        <input
+          className="form-control"
+          id="exampleInputPassword1"
+          name="password"
+          onChange={[Function]}
+          placeholder="Password"
+          type="password"
+        />
+      </div>
+      <button
+        className="btn btn-primary"
+        type="submit"
+      >
+        Login
+      </button>
+    </form>
+    <Link
+      replace={false}
+      to="/signup"
+    >
+      <button
+        className="btn btn-default"
+        type="submit"
+      >
+        Sign Up
+      </button>
+    </Link>
+  </div>
+</div>
+`;

@@ -4,7 +4,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import './Login.scss';
+// import './Login.scss';
 
 class Login extends React.Component {
   constructor(props) {
@@ -34,7 +34,10 @@ class Login extends React.Component {
         <h2 className="text-center logo">My Asana</h2>
         <div className="form-container">
           <h2 className="text-center">Login</h2>
-          <form onSubmit={this.signin}>
+          <form
+            data-test="signin-form"
+            onSubmit={this.signin}
+          >
             <div className="form-group">
               <label>Email address</label>
               <input
@@ -62,7 +65,12 @@ class Login extends React.Component {
             <button type="submit" className="btn btn-primary">Login</button>
           </form>
           <Link to="/signup">
-            <button type="submit" className="btn btn-default">Sign Up</button>
+            <button
+              type="submit"
+              className="btn btn-default"
+            >
+              Sign Up
+            </button>
           </Link>
         </div>
       </div>
