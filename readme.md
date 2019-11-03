@@ -26,3 +26,7 @@ Your app is ready to be deployed!
 
 This will server production build app in local nnode server.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+### `Yarn test`
+
+This will run unit test. Unit test are written with `Jest + enzyme`
