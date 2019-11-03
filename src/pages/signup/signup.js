@@ -3,7 +3,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import 'pages/login/login.scss';
+import '../Login/Login.scss';
 
 class Signup extends React.Component {
   constructor(props) {
@@ -34,7 +34,10 @@ class Signup extends React.Component {
         <h2 className="text-center logo">My Asana</h2>
         <div className="form-container">
           <h2 className="text-center">Sign Up</h2>
-          <form onSubmit={this.onSubmit}>
+          <form
+            data-test="signup-form"
+            onSubmit={this.onSubmit}
+          >
             <div className="form-group">
               <label>Email address</label>
               <input
